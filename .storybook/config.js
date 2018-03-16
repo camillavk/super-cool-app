@@ -1,7 +1,10 @@
-import { configure } from '@kadira/storybook';
+import { configure } from '@storybook/react';
 
 function loadStories() {
-  require('../stories');
+  const requireStories = require.context('../src', true, /stories\.js$/)
+  const children = requireStories.keys()
+
+  children.forEach(requireStories)
 }
 
 configure(loadStories, module);
