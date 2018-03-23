@@ -3,6 +3,9 @@ import { storiesOf, action, linkTo } from '@storybook/react';
 import Header from './'
 
 storiesOf('Header', module)
+  .add('without text', () => (
+    <Header />
+  ))
   .add('with text', () => (
-    <Header>Something</Header>
+    <Header app_name='OMG Coolest App Ever' />
   ))

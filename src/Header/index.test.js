@@ -8,9 +8,18 @@ it('renders without crashing', () => {
   ReactDOM.render(<Header />, div);
 });
 
-it('displays the app name', () => {
-  const wrapper = shallow(<Header />);
-  const app_name = <h2>Super Cool App</h2>;
+describe('app name', () => {
+  it('displays the defaul app name', () => {
+    const wrapper = shallow(<Header />);
+    const app_name = <h2>Super Cool App</h2>;
 
-  expect(wrapper.contains(app_name)).toEqual(true);
+    expect(wrapper).toContainReact(app_name)
+  });
+
+  it('can display a different name if passed to it', () => {
+    const wrapper = shallow(<Header app_name='Really Super Cool App' />);
+    const app_name = <h2>Really Super Cool App</h2>;
+
+    expect(wrapper).toContainReact(app_name)
+  });
 })
